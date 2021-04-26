@@ -1,0 +1,108 @@
+<div class="flex-container">
+    <mat-card *ngIf="!process">
+        <span class="example-spacer "></span>
+        <mat-toolbar color="primary">
+            <span>Clientes</span>
+        </mat-toolbar>
+        <span class="example-spacer "></span>
+        <form class="example-form" [formGroup]="clienteForm" (ngSubmit)="onSubmit()">
+            <table class="example-full-width" cellspacing="0">
+                <tr>
+                    <td>
+                        <mat-form-field class="example-full-width" appearance="outline">
+                            <mat-label>Nome</mat-label>
+                            <input matInput placeholder="Placeholder" formControlName="nome">
+                            <mat-icon matSuffix>badge</mat-icon>
+                            <mat-error *ngIf="clienteForm.hasError('required', 'nome')">Please, type a valid nome</mat-error>
+                        </mat-form-field>
+                    </td>
+                    
+                </tr>
+            </table>
+
+            <div>
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Enter your email</mat-label>
+                    <input matInput placeholder="pat@example.com" formControlName="email" required>
+                    <mat-icon matSuffix>email</mat-icon>
+                    <mat-error *ngIf="clienteForm.hasError('required', 'email')">Please, type a valid email</mat-error>
+                  </mat-form-field>                 
+                 
+                </div>
+            <table class="example-full-width" cellspacing="0">
+                <tr>
+                    <td>
+                        <mat-form-field class="example-full-width"  appearance="outline">
+                            <mat-label>Telephone</mat-label>
+                            <input type="tel" matInput placeholder="55- 5 5555-1234" mask='(00) 0 0000-0000' formControlName="telefone">
+                            <mat-icon matSuffix>phone</mat-icon>
+                            <mat-error *ngIf="clienteForm.hasError('required', 'telefone')">Please, type a valid telefone</mat-error>
+                          </mat-form-field>
+                    </td>
+                    <td>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Data de Nasci.</mat-label>
+                            <input matInput [matDatepicker]="picker" formControlName="nascimento">
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                          </mat-form-field>
+                    </td>
+                </tr>
+            </table>
+
+            <table class="example-full-width" cellspacing="0">
+                <tr>
+                    <td>
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Cidade</mat-label>
+                            <input matInput placeholder="Ex. San Francisco" formControlName="cidade">
+                            <mat-error *ngIf="clienteForm.hasError('required', 'cidade')">Please, type a valid cidade</mat-error>
+                        </mat-form-field>
+                    </td>
+                    <td>
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Estado</mat-label>
+                            <input matInput placeholder="Ex. California" formControlName="estado">
+                            <mat-error *ngIf="clienteForm.hasError('required', 'estado')">Please, type a valid estado</mat-error>
+                        </mat-form-field>
+                    </td>
+                </tr>
+            </table>
+            <div>
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Planos</mat-label>
+                    <mat-select>
+                      <mat-option *ngFor="let plano of planos" [value]="plano.plano">
+                        {{plano.plano}}
+                      </mat-option>
+                    </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="item-buttons" *ngIf="!delete">
+                <button mat-button class="style-button"  >Save</button>
+                  <span class="spacer"></span>
+                <button mat-button class="style-button"  [mat-dialog-close]="true" (click)="onCancel()">Cancel</button>
+              </div>
+             
+              <div class="item-buttons" *ngIf="delete">
+                <button mat-button class="style-button">Delete</button>
+                  <span class="spacer"></span>
+                <button mat-button class="style-button" [mat-dialog-close]="true">Close</button>
+              </div>
+        </form>     
+
+    </mat-card>
+    <div class="flex-container" *ngIf="process">
+        <mat-card>
+            <span class="example-spacer "></span>
+            <mat-toolbar color="primary">
+                <span>Processando...</span>
+            </mat-toolbar>
+            <div class="flex-container">
+                <mat-spinner></mat-spinner>
+              
+            </div>
+        </mat-card>
+    </div>
+
+</div>

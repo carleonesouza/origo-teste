@@ -1,0 +1,26 @@
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+    margin-top: 1rem;
+  }
+  .example-full-width {
+    width: 100%;
+  }
+  mat-toolbar{
+    display: flex;
+    justify-content: center;
+    border-radius: 4px 4px 4px 4px;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+  
+  td {
+    padding-right: 8px;
+  }
+  mat-spinner{
+    margin: 2rem;
+  }
+  

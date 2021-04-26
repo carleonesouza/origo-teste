@@ -1,0 +1,56 @@
+<div class="conteiner">
+  <mat-tab-group>
+    <mat-tab label="Login">
+      <div class="container">
+        <mat-card class="example-card">
+          <mat-card-header>
+            <mat-card-title class="card-header">Origo App</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <div class="container column">
+              <mat-dialog-content>
+                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                  <div class="item item-4">
+                    <mat-form-field appearance="outline">
+                      <mat-label>Enter your email</mat-label>
+                      <input matInput placeholder="pat@example.com" formControlName="email" required>
+                      <mat-error *ngIf="loginForm.hasError('required', 'email')">
+                        Please enter your with email
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+                  <div class="item item-4">
+                    <mat-form-field appearance="fill">
+                      <mat-label>Enter your password</mat-label>
+                      <input matInput [type]="hide ? 'password' : 'text'" formControlName="password"  required>
+                      <mat-error *ngIf="password && password.invalid && (password.dirty || password.touched)">
+                        <div *ngIf="loginForm.get('password')?.errors?.required">
+                          password is required.
+                        </div>
+                        <div *ngIf="loginForm.get('password')?.errors?.minlength">
+                          password must be at least 8 characters long.
+                        </div>
+                      </mat-error>
+                      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                        [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                      </button>                      
+                    </mat-form-field>
+                  </div>
+                  <div class="container">
+                    <button mat-raised-button color="accent" type="submit" [disabled]="!loginForm.valid">Entrar</button>
+                  </div>
+                </form>
+              </mat-dialog-content>
+            </div>
+
+          </mat-card-content>
+        </mat-card>
+      </div>
+     
+    </mat-tab>
+    <mat-tab label="Registrar">
+      <app-add-conta></app-add-conta>
+    </mat-tab>
+  </mat-tab-group>
+</div>

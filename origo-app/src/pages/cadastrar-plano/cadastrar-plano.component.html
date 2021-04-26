@@ -1,0 +1,38 @@
+<div class="flex-container">
+    <mat-card>
+        <span class="example-spacer "></span>
+        <mat-toolbar color="primary">
+            <span>Cadastrar Planos</span>
+        </mat-toolbar>
+        <span class="example-spacer "></span>
+        <form class="example-form" [formGroup]="planoForm" (ngSubmit)="onSubmit()">
+            <table class="example-full-width" cellspacing="0">
+                <tr>
+                    <td>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Nome</mat-label>
+                            <input matInput placeholder="Placeholder" required formControlName="plano">
+                            <mat-icon matSuffix>credit_card</mat-icon>
+                            <mat-error *ngIf="planoForm.hasError('required', 'palno')">Please, type a valid plan name</mat-error>
+                        </mat-form-field>
+                    </td>
+                    <td>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Mensalidade</mat-label>
+                            <input matInput type="text" class="example-right-align" formControlName="mensalidade">
+                            <mat-icon matSuffix>paid</mat-icon>
+                        </mat-form-field>
+                    </td>
+                </tr>
+            </table>
+                     
+            <div class="item-buttons">
+                <button mat-button class="style-button">Save</button>
+                  <span class="spacer"></span>
+                <button mat-button class="style-button">Cancel</button>
+              </div>
+        </form>
+
+    </mat-card>
+
+</div>

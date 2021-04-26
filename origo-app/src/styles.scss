@@ -1,0 +1,87 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+body {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+
+  // Helps fonts on OSX looks more consistent with other systems
+  // Isn't currently in button styles due to performance concerns
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  *,
+  *:hover,
+  *:active,
+  *:visited,
+  *:enabled,
+  *:default,
+  *:disabled {
+    outline: 0 none transparent;
+  }
+
+  .app-root {
+    z-index: 15;
+  }
+  .app-content {
+    box-sizing: border-box;
+    display: block;
+  }
+
+  .container {
+    padding-top: 10%;
+    max-height: 100%;
+    justify-content: center;
+    display: flex;
+    position: relative;
+  }
+
+  .mat-tab-labels {
+    display: flex;
+    justify-content: center;
+  }
+.flex-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.example-button-container {
+  display: flex;
+  justify-content: center;
+  width: 120px;
+}
+.grid-container {
+  display: flex;
+  justify-content: center;
+}
+.item-buttons{
+	display: table-row;
+	float: right;
+	position: relative;
+}
+
+
+@media(max-width: 940px){
+  .example-button-row {
+    display: flex;
+  }
+  
+  .grid-container {
+    display: unset;
+  
+  }
+
+}
+
+  @media (max-width: 812px) {
+    .container {
+      padding: 0.5rem;
+    }
+  }
+}

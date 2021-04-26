@@ -1,0 +1,61 @@
+<div class="grid-container">
+    <div class="row">
+        <div class="col">
+            <mat-card class="example-card">
+                <mat-card-header>
+                    <mat-card-title>Clientes</mat-card-title>
+                    <mat-card-subtitle>Welcome to our System</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+                    <div class="example-button-row">
+                        <div class="example-flex-container">
+                            <a mat-raised-button color="primary" [routerLink]="['/cadastra-cliente']"
+                                aria-label="Example icon button with a vertical three dot icon">
+                                Cadastrar Cliente<mat-icon>app_registration</mat-icon>
+                        </a>
+                        </div>
+                    </div>
+
+                    <div class="example-button-row">
+                        <div class="example-flex-container">
+                            <a mat-raised-button color="accent"  [routerLink]="['/lista-cliente']"
+                                aria-label="Example icon button with a vertical three dot icon">
+                                Listar Cliente<mat-icon>playlist_add_check</mat-icon>
+                            </a>
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <mat-card class="example-card">
+            <mat-card-header>
+                <mat-card-title>Plano Cliente</mat-card-title>
+                <mat-card-subtitle>Welcome to our System</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <div class="example-button-row">
+                    <div class="example-flex-container">
+                        <button mat-raised-button color="primary" [routerLink]="['/cadastra-plano']"
+                            aria-label="Example icon button with a vertical three dot icon">
+                            Cadastrar Plano<mat-icon>app_registration</mat-icon>
+                        </button>
+                    </div>
+                </div>
+                <div class="example-button-row">
+                    <div class="example-flex-container">
+                        <button mat-raised-button color="accent" [routerLink]="['/lista-plano']"
+                            aria-label="Example icon button with a vertical three dot icon">
+                            Listar Planos<mat-icon>playlist_add_check</mat-icon>
+                        </button>
+                    </div>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+
+
+</div>

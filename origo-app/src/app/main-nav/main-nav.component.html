@@ -1,0 +1,45 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" *ngIf="userAuth" fixedInViewport [ngClass]="{hidden: (isHandset$ | async) === false}"
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item [routerLink]="['/dashboard']" routerLinkActive="router-link-active" >
+        Home</a>
+      <a mat-list-item [routerLink]="['/lista-cliente']" routerLinkActive="router-link-active" >
+        Clientes</a>
+      <a mat-list-item [routerLink]="['/lista-plano']" routerLinkActive="router-link-active" >
+        Planos</a>
+        <a mat-list-item (click)="signOut()">
+          Sair</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar *ngIf="userAuth"  color="primary">
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button 
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>origo-app</span>
+      <span class="example-spacer"></span>
+
+      <div class="row" *ngIf="(isHandset$ | async) === false">
+        <a mat-button [routerLink]="['/dashboard']" routerLinkActive="router-link-active" >
+         Home
+        </a>
+        <a mat-button [routerLink]="['/lista-cliente']" routerLinkActive="router-link-active" >
+         Clientes
+        </a>
+        <a mat-button [routerLink]="['/lista-plano']" routerLinkActive="router-link-active" >
+          Planos
+        </a>
+        <a mat-button (click)="signOut()">
+          Sair
+        </a>
+      </div>
+    </mat-toolbar>
+    <div class="container">
+      <router-outlet id="main"></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

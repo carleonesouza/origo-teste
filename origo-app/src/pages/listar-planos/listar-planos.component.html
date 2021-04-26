@@ -1,0 +1,47 @@
+<div class="flex-container">
+    <span class="example-spacer "></span>
+    <mat-toolbar color="primary">
+      <span>Lista de Clientes </span>
+      </mat-toolbar>
+  
+    <div class="mat-elevation-z8 table-style">
+      <!-- <div class="form">
+        <mat-form-field floatPlaceholder="never" color="warn">
+          <input matInput #filter (keyup)="applyFilter($event)" placeholder="Filter {{title}} ">
+        </mat-form-field>
+      </div> -->
+      <mat-table #table [dataSource]="planos" matSort>
+      <ng-container cdkColumnDef="plano">
+        <th cdk-header-cell *cdkHeaderCellDef>Plano</th>
+        <td cdk-cell *cdkCellDef="let row"> {{row.plano}} </td>
+      </ng-container>
+
+      <!-- Age Definition -->
+      <ng-container cdkColumnDef="mensalidade">
+        <th cdk-header-cell *cdkHeaderCellDef> Mensalidade </th>
+        <td cdk-cell *cdkCellDef="let row"> {{row.mensalidade |currency:"BRL"}} </td>
+      </ng-container>
+
+      <!-- Age Definition -->
+      <ng-container cdkColumnDef="actions">
+        <th cdk-header-cell *cdkHeaderCellDef> Actions </th>
+        <td cdk-cell *cdkCellDef="let row">
+          <button mat-icon-button matTooltip="Edit button">
+            <mat-icon color="accent" aria-label="Edit">edit</mat-icon>
+          </button>
+
+          <button mat-icon-button matTooltip="Delete button">
+            <mat-icon color="warn" aria-label="Delete">delete</mat-icon>
+          </button>
+
+        </td>
+      </ng-container>
+
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  
+    </div>
+  </div>

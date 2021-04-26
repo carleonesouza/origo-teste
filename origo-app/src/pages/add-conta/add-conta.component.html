@@ -1,0 +1,54 @@
+<div class="conteiner">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <mat-card-title class="card-header">Origo App</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="container column" >
+          <mat-dialog-content [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <div class="item item-4">
+              <mat-form-field appearance="outline">
+                <mat-label>Username</mat-label>
+                <input  matInput placeholder="Nome do usuário" type="text" formControlName="name" class="form-control"/>
+                <mat-error *ngIf="registerForm.hasError('required', 'name')">Please, type a valid name</mat-error>
+              </mat-form-field>
+            </div>
+          <div class="item item-4">
+            <mat-form-field appearance="outline">
+              <mat-label>Enter your email</mat-label>
+              <input matInput placeholder="pat@example.com" formControlName="email" required>
+              <mat-error *ngIf="registerForm.hasError('required', 'email')">
+                Please enter your with email
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="item item-4">
+            <mat-form-field appearance="fill">
+              <mat-label>Enter your password</mat-label>
+              <input matInput [type]="hide ? 'password' : 'text'" formControlName="password"  required>
+              <mat-error *ngIf="password && password.invalid && (password.dirty || password.touched)">
+                <div *ngIf="registerForm.get('password')?.errors?.required">
+                  password is required.
+                </div>
+                <div *ngIf="registerForm.get('password')?.errors?.minlength">
+                  password must be at least 8 characters long.
+                </div>
+              </mat-error>
+              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>                      
+            </mat-form-field>
+          </div>
+          <div class="item-buttons">
+            <button mat-button class="style-button" [disabled]="!registerForm.valid" (click)="onSubmit()">Save</button>
+              <span class="spacer"></span>
+            <button mat-button class="style-button" (click)="onNoClick()" tabindex="-1">Cancel</button>
+          </div>
+        </mat-dialog-content>
+        </div>
+        
+      </mat-card-content>
+    </mat-card>
+
+</div>
